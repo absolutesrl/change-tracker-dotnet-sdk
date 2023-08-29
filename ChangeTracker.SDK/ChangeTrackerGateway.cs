@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
-using ChangeTracker.Client.Core;
-using ChangeTracker.Client.Interfaces;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK.Core;
+using ChangeTracker.SDK.Interfaces;
+using ChangeTracker.SDK.Models;
 
-namespace ChangeTracker.Client
+namespace ChangeTracker.SDK
 {
     internal class ChangeTrackerGateway
     {

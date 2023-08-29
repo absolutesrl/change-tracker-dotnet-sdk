@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using ChangeTracker.Client.Interfaces;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK.Interfaces;
+using ChangeTracker.SDK.Models;
 
-namespace ChangeTracker.Client.Core
+namespace ChangeTracker.SDK.Core
 {
     public class StandardChangeCalculator : IChangeCalculator
     {

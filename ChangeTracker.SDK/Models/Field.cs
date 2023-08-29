@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace ChangeTracker.Client.Models
+namespace ChangeTracker.SDK.Models
 {
     public class Field
     {

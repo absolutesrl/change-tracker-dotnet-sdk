@@ -1,8 +1,7 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using ChangeTracker.Client.Models;
+﻿using System.Threading.Tasks;
+using ChangeTracker.SDK.Models;
 
-namespace ChangeTracker.Client.Interfaces
+namespace ChangeTracker.SDK.Interfaces
 {
     public interface IChangeStorage
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using ChangeTracker.Client.Core;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK.Core;
+using ChangeTracker.SDK.Models;
 
-namespace ChangeTracker.Client
+namespace ChangeTracker.SDK
 {
     public static class ModelTracker
     {
@@ -186,11 +186,12 @@ namespace ChangeTracker.Client
                 else
                     Fields.Add(fieldName, func);
 
-                if (!string.IsNullOrEmpty(format))
-                    if (FieldFormats.ContainsKey(fieldName))
-                        FieldFormats[fieldName] = format;
-                    else
-                        FieldFormats.Add(fieldName, format);
+                if (string.IsNullOrEmpty(format)) return this;
+
+                if (FieldFormats.ContainsKey(fieldName))
+                    FieldFormats[fieldName] = format;
+                else
+                    FieldFormats.Add(fieldName, format);
 
                 return this;
             }
@@ -203,11 +204,12 @@ namespace ChangeTracker.Client
 
                 ParseMapping(mapping, fieldName);
 
-                if (!string.IsNullOrEmpty(format))
-                    if (FieldFormats.ContainsKey(fieldName))
-                        FieldFormats[fieldName] = format;
-                    else
-                        FieldFormats.Add(fieldName, format);
+                if (string.IsNullOrEmpty(format)) return this;
+
+                if (FieldFormats.ContainsKey(fieldName))
+                    FieldFormats[fieldName] = format;
+                else
+                    FieldFormats.Add(fieldName, format);
 
                 return this;
             }

@@ -3,10 +3,10 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK.Models;
 using Newtonsoft.Json;
 
-namespace ChangeTracker.Client
+namespace ChangeTracker.SDK
 {
     public class ChangeTrackerService
     {
@@ -25,7 +25,7 @@ namespace ChangeTracker.Client
             var cancellationTokenSource = new CancellationTokenSource();
             var token = cancellationTokenSource.Token;
 
-            Task.Factory.StartNew(async () =>
+            Task.Factory.StartNew<Task>(async () =>
             {
                 while (true)
                 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ChangeTracker.Client.Models
+namespace ChangeTracker.SDK.Models
 {
     public class Row
     {

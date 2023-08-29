@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChangeTracker.Client.Models
+namespace ChangeTracker.SDK.Models
 {
     public class GetChangesResult
     {

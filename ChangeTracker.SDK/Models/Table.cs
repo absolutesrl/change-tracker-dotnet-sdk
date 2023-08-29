@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 
-namespace ChangeTracker.Client.Models
+namespace ChangeTracker.SDK.Models
 {
     public class Table
     {

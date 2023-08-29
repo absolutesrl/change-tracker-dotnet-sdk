@@ -1,6 +1,6 @@
-﻿using ChangeTracker.Client.Models;
+﻿using ChangeTracker.SDK.Models;
 
-namespace ChangeTracker.Client.Interfaces
+namespace ChangeTracker.SDK.Interfaces
 {
     public interface IChangeCalculator
     {

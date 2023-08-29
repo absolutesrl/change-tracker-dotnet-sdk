@@ -3,12 +3,12 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using ChangeTracker.Client.Interfaces;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK.Interfaces;
+using ChangeTracker.SDK.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace ChangeTracker.Client.Core
+namespace ChangeTracker.SDK.Core
 {
     public class RemoteChangeStorage : IChangeStorage
     {

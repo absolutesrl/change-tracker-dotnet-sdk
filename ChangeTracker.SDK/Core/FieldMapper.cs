@@ -1,44 +1,11 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq.Expressions;
-using ChangeTracker.Client.Models;
 
-namespace ChangeTracker.Client.Core
+namespace ChangeTracker.SDK.Core
 {
     public static class FieldMapper
     {
-        public static Field Map<TType, TField>(TType model, Expression<Func<TType, TField>> func,
-            string fieldName = null, string format = null)
-        {
-            try
-            {
-                fieldName = fieldName ?? GetName(func);
-            }
-            catch (Exception e)
-            {
-                fieldName = "unknown";
-            }
-
-            string value = "";
-            var fieldType = typeof(string);
-            try
-            {
-                var dataValue = func.Compile().Invoke(model);
-                fieldType = dataValue?.GetType() ?? fieldType;
-                value = ConvertValue(dataValue, format);
-            }
-            catch (Exception e)
-            {
-            }
-
-            var ret = new Field { Name = fieldName, PrevValue = value };
-
-            ret.SetFieldType(fieldType);
-            ret.SetFieldFormat(format);
-
-            return ret;
-        }
-
         public static string GetName<TSource, TField>(Expression<Func<TSource, TField>> field)
         {
             if (Equals(field, null))
