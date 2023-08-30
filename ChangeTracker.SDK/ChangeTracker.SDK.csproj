@@ -26,6 +26,7 @@
 		<Copyright>Absolute</Copyright>
 		<PackageProjectUrl>https://changetracker.it/</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
+		<Authors>Absolute</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
