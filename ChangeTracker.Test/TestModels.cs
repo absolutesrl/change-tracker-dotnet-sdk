@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using ChangeTracker.Client;
+using ChangeTracker.SDK;
 
 namespace ChangeTracker.Test
 {

@@ -44,7 +44,7 @@ namespace ChangeTracker.SDK
             return map;
         }
     
-        public static Table ToTableModel(this IEnumerable<Row> rowModels, string tableName)
+        public static Table ToTable(this IEnumerable<Row> rowModels, string tableName)
         {
             var res = new Table
             {
@@ -263,7 +263,7 @@ namespace ChangeTracker.SDK
                 return res;
             }
 
-            public Row ToRowModel(string rowKey, List<Table> linkedTables = null)
+            public Row ToRow(string rowKey, List<Table> linkedTables = null)
             {
                 var res = new Row
                 {

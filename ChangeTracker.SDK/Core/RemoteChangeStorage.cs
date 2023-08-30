@@ -55,11 +55,12 @@ namespace ChangeTracker.SDK.Core
                 throw;
             }
 
+            var isSuccessResponse = result.StatusCode == HttpStatusCode.OK;
 
             var ret = new StoreChangesResult
             {
-                Ok = result.StatusCode == HttpStatusCode.OK,
-                ErrorText = await result.Content.ReadAsStringAsync()
+                Ok = isSuccessResponse,
+                ErrorText = !isSuccessResponse ? await result.Content.ReadAsStringAsync() : null
             };
 
             return ret;

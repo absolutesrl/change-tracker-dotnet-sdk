@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChangeTracker.Client\ChangeTracker.Client.csproj" />
+    <ProjectReference Include="..\ChangeTracker.SDK\ChangeTracker.SDK.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Reflection;
-using ChangeTracker.Client;
-using ChangeTracker.Client.Core;
-using ChangeTracker.Client.Models;
+using ChangeTracker.SDK;
+using ChangeTracker.SDK.Core;
+using ChangeTracker.SDK.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChangeTracker.Test
@@ -98,11 +96,11 @@ namespace ChangeTracker.Test
                 }
             };
 
-            var rowModel = ModelTracker.CreateMap(model).MapAll().ToRowModel("PRIMA",
+            var rowModel = ModelTracker.CreateMap(model).MapAll().ToRow("PRIMA",
                 new List<Table>
                 {
                     model.Righe.Select(el =>
-                        ModelTracker.MapAll(el).ToRowModel(el.IDProdotto)).ToTableModel("Righe")
+                        ModelTracker.MapAll(el).ToRow(el.IDProdotto)).ToTable("Righe")
                 });
 
 
@@ -295,10 +293,10 @@ namespace ChangeTracker.Test
             };
 
             //STEP 1 - test log su creazione nuovo modello
-            var mapNext = ModelTracker.CreateMap(model).MapAll().ToRowModel(model.Id,
+            var mapNext = ModelTracker.CreateMap(model).MapAll().ToRow(model.Id,
                 new List<Table>
                 {
-                    model.Righe.Select(el => ModelTracker.MapAll(el).ToRowModel(el.IDProdotto)).ToTableModel("Righe")
+                    model.Righe.Select(el => ModelTracker.MapAll(el).ToRow(el.IDProdotto)).ToTable("Righe")
                 });
 
             
@@ -318,9 +316,9 @@ namespace ChangeTracker.Test
             Assert.IsTrue(linkedTables[0].Rows[1].Fields.Count == 4);
 
             //STEP 2 - test log su cancellazione modello
-            var mapPrev = ModelTracker.CreateMap(model).MapAll().ToRowModel(model.Id, new List<Table>
+            var mapPrev = ModelTracker.CreateMap(model).MapAll().ToRow(model.Id, new List<Table>
             {
-                model.Righe.Select(el => ModelTracker.MapAll(el).ToRowModel(el.IDProdotto)).ToTableModel("Righe")
+                model.Righe.Select(el => ModelTracker.MapAll(el).ToRow(el.IDProdotto)).ToTable("Righe")
             });
             
             // Genera le differenze
@@ -372,9 +370,9 @@ namespace ChangeTracker.Test
                 }
             };
 
-            var mapPrev = ModelTracker.CreateMap(model).MapAll().ToRowModel(model.Id);
+            var mapPrev = ModelTracker.CreateMap(model).MapAll().ToRow(model.Id);
             
-            mapPrev.Tables.Add(model.Righe.Select(el => ModelTracker.MapAll(el).ToRowModel(el.IDProdotto)).ToTableModel("Righe"));
+            mapPrev.Tables.Add(model.Righe.Select(el => ModelTracker.MapAll(el).ToRow(el.IDProdotto)).ToTable("Righe"));
 
             model.Descrizione = "Descrizione Modificata";
 
@@ -386,10 +384,10 @@ namespace ChangeTracker.Test
                 Importo = 80.34M
             };
             
-            var mapNext = ModelTracker.CreateMap(model).MapAll().ToRowModel(model.Id);
+            var mapNext = ModelTracker.CreateMap(model).MapAll().ToRow(model.Id);
 
-            mapNext.Tables.Add(model.Righe.Select(el => ModelTracker.MapAll(el).ToRowModel(el.IDProdotto))
-                .ToTableModel("Righe"));
+            mapNext.Tables.Add(model.Righe.Select(el => ModelTracker.MapAll(el).ToRow(el.IDProdotto))
+                .ToTable("Righe"));
 
             // Genera le differenze indicando che siamo sulla tabella "Anagrafica" e che l'utente è Riccardo
             var diff = new StandardChangeCalculator().Diff(mapPrev, mapNext);
@@ -493,7 +491,7 @@ namespace ChangeTracker.Test
                 .Map(el => el.PrezzoImponibile, format: "0.0000");
             
             //Nonostante prima sia PrezzoTotale = 5 e dopo 5.0000 mi aspetto di non vedere modifiche su quel campo perché c'è la formattazione
-            var diff = new StandardChangeCalculator().Diff(map.ToRowModel(model.Id), mapDopo.ToRowModel(model.Id));
+            var diff = new StandardChangeCalculator().Diff(map.ToRow(model.Id), mapDopo.ToRow(model.Id));
             diff.Desc = "Descrizione riga";
             var table = Table.CreateTable(new List<Row> { diff }, "Prima", "TestUser", "127.1.1.1");
 

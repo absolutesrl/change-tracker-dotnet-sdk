@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using ChangeTracker.SDK.Core;
 using ChangeTracker.SDK.Interfaces;
@@ -31,14 +33,13 @@ namespace ChangeTracker.SDK
             if (prev == null && next == null) return null;
 
             var token = TokenGenerator.GenerateToken(_apiSecretPost, tableName, duration: _tokenMinuteDuration);
-
             var row = ChangeCalculator.Diff(prev, next);
 
             if (row == null)
                 return new StoreChangesResult
                     { Ok = false, ErrorText = "ChangeTracker, diff: missing or invalid diff models" };
             
-            if (row.IsFull()) return new StoreChangesResult { Ok = true };
+            if (!row.IsFull()) return new StoreChangesResult { Ok = true };
 
             var table = Table.CreateTable(new List<Row> { row }, tableName, userName, ipAddress);
 

@@ -2,8 +2,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ChangeTracker.Client.Models;
-using ChangeTracker.Client.Core;
+using ChangeTracker.SDK;
+using ChangeTracker.SDK.Core;
+using ChangeTracker.SDK.Models;
+
 
 namespace ChangeTracker.Test
 {
@@ -13,22 +15,7 @@ namespace ChangeTracker.Test
         [TestMethod]
         public void TestDiffCreateDeleteUpdate()
         {
-            var track = new Func<TestModel, Row>(m =>
-            {
-                return new Row
-                {
-                    Key = m.Id,
-                    Fields = new List<Field>
-                    {
-                        FieldMapper.Map(m, el => el.Id),
-                        FieldMapper.Map(m, el => el.Descrizione),
-                        FieldMapper.Map(m, el => el.Testo),
-                        FieldMapper.Map(m, el => el.Data),
-                        FieldMapper.Map(m, el => el.Prezzo),
-                        FieldMapper.Map(m, el => el.FlagBit)
-                    }
-                };
-            });
+            var track = new Func<TestModel, Row>(m => ModelTracker.MapAll(m).ToRow(m.Id));
 
             // Modello iniziale, solitamente letto da DB
             var model = new TestModel
@@ -66,22 +53,7 @@ namespace ChangeTracker.Test
         [TestMethod]
         public void TestDiffUpdate()
         {
-            var track = new Func<TestModel, Row>(m =>
-            {
-                return new Row
-                {
-                    Key = m.Id,
-                    Fields = new List<Field>
-                    {
-                        FieldMapper.Map(m, el => el.Id),
-                        FieldMapper.Map(m, el => el.Descrizione),
-                        FieldMapper.Map(m, el => el.Testo),
-                        FieldMapper.Map(m, el => el.Data),
-                        FieldMapper.Map(m, el => el.Prezzo),
-                        FieldMapper.Map(m, el => el.FlagBit)
-                    }
-                };
-            });
+            var track = new Func<TestModel, Row>(m => ModelTracker.MapAll(m).ToRow(m.Id));
 
             // Modello iniziale, solitamente letto da DB
             var model = new TestModel
