@@ -14,7 +14,7 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<Company>Absolute</Company>
 		<PackageIcon>logo.png</PackageIcon>
-		<PackageId>changetracker-sdk</PackageId>
+		<PackageId>ChangeTracker.SDK</PackageId>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
