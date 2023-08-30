@@ -31,6 +31,10 @@ jobs:
         fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
 
 
+    # Build the project
+    - name: Build
+      run: dotnet build --configuration Release
+    
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
 
@@ -68,7 +72,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run tests
-      run: dotnet test --configuration Release
+      run: dotnet test --configuration Release --filter "TestCategory!=IgnoreOnPublish"
 
   deploy:
     # Publish only when creating a GitHub Release

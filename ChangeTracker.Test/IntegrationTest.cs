@@ -13,6 +13,7 @@ namespace ChangeTracker.Test
     public class IntegrationTest
     {
         [TestMethod]
+        [TestCategory("IgnoreOnPublish")]
         public void AtomicComponents()
         {
             var accountName = "accountName";
@@ -68,6 +69,7 @@ namespace ChangeTracker.Test
         }
 
         [TestMethod]
+        [TestCategory("IgnoreOnPublish")]
         public void ChangeTrackerService()
         {
             var accountName = "accountName";
@@ -104,6 +106,7 @@ namespace ChangeTracker.Test
         }
 
         [TestMethod]
+        [TestCategory("IgnoreOnPublish")]
         public void AsyncChangeTrackerService()
         {
             var accountName = "accountName";
