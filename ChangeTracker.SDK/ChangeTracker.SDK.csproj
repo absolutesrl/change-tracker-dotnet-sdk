@@ -15,8 +15,15 @@
     <Company>Absolute</Company>
     <PackageIcon>logo.png</PackageIcon>
     <PackageId>changetracker-sdk</PackageId>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Description>ChangeTracker .Net SDK</Description>
+	<Copyright>Absolute</Copyright>
+	<PackageProjectUrl>https://changetracker.it/</PackageProjectUrl>
+	<RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
+ 
   <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>
